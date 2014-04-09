@@ -32,4 +32,21 @@ class FinanciamentoController < ApplicationController
     return valor_pago, tabela
   end
 
+  def aplicacao
+    if request.xhr?
+      valor_aplicado = valor_corrigido = params[:valor_aplicado].to_f
+      taxa = params[:taxa_juros].to_f
+      @meses = params[:meses].to_i
+      taxa = 1 + taxa / 12.0 / 100
+      valor_aplicado_mensal = (params[:valor_aplicado_mensal].present? ? params[:valor_aplicado_mensal].to_f : 0.0)
+      @meses.times do
+        valor_corrigido = (valor_corrigido + valor_aplicado_mensal) * taxa
+        p valor_aplicado
+      end
+      @valor_aplicado_corrigido = valor_corrigido
+      @rendimento = valor_corrigido - valor_aplicado
+      render template: 'financiamento/aplicacao.js.erb'
+    end
+  end
+
 end

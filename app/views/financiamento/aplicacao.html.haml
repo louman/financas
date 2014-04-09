@@ -1,0 +1,16 @@
+= form_tag aplicacao_financiamento_index_path, remote: true do
+  = label_tag 'Valor à aplicar'
+  = text_field_tag 'valor_aplicado', '', mask_it: 'money'
+
+  = label_tag 'Taxa de juros (anual)'
+  = text_field_tag 'taxa_juros', '', mask_it: 'money'
+
+  = label_tag 'Meses'
+  = text_field_tag 'meses', '', mask_it: 'number'
+
+  = label_tag 'Aplicação mensal'
+  = text_field_tag 'valor_aplicado_mensal', '', mask_it: 'money'
+  %br
+  = submit_tag 'Calcular', class: 'btn'
+
+#result

@@ -7,6 +7,15 @@ Financas::Application.routes.draw do
 
   post 'financiamento/imovel' => 'financiamento#imovel', as: :imovel
 
+
+  resources :financiamento, only: [] do
+    collection do
+      get :aplicacao
+      post :aplicacao
+      post :imovel
+    end
+  end
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
