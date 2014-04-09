@@ -1,0 +1,13 @@
+= form_tag imovel_path, remote: true do
+  = label_tag 'Valor financiado'
+  = text_field_tag 'valor_financiado'
+
+  = label_tag 'Taxa de juros (anual)'
+  = text_field_tag 'taxa_juros'
+
+  = label_tag 'Meses'
+  = text_field_tag 'parcelas'
+
+  = submit_tag 'Calcular'
+
+#result

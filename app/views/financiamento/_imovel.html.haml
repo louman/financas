@@ -1,0 +1,15 @@
+%p
+  Valor total pago:
+  = number_to_currency valor_total_pago
+
+%table{ style: 'width: 800px'}
+  %tr
+    %td #
+    %td Parcela
+    %td Saldo Devedor
+
+  - tabela.each_with_index do |parcela, index|
+    %tr
+      %td= index
+      %td= number_to_currency parcela[:valor_parcela]
+      %td= number_to_currency parcela[:saldo_devedor].abs
