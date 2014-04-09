@@ -13,3 +13,21 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+$(document).ready(function() {
+  applyMasks();
+});
+
+
+function applyMasks() {
+  $.mask.definitions['0'] = "[0-9]";
+  $('[mask_it=date]').mask('99/99/9999');
+  maskMoney();
+  $('[mask_it=number]').keyup(function() {
+    $(this).val($(this).val().replace(/[^0-9]/g, ''));
+  });
+}
+
+function maskMoney() {
+  $('[mask_it=money]').autoNumeric('init', {aSep: '', aDec: ','});
+}
